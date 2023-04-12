@@ -1,1 +1,1 @@
-https://umutbektas-myportfolio.netlify.app
+https://umutbektas.netlify.app
