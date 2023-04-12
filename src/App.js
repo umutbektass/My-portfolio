@@ -132,7 +132,7 @@ function App() {
       {/* FOOTER */}
       <footer className="footer">
         <div className="footer-text">
-          <p>Copyright; 2023 by Codehal | All rights Reserved.</p>
+          <p>Umut Bektaş</p>
         </div>
         <div className="footer-iconTop">
           <a href="#home"><FaArrowUp style={{fontSize:"2.4rem"}}/></a>
