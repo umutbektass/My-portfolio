@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styles/style.css'
-import { FaBars, FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn, FaCode,FaArrowCircleUp,FaArrowUp,FaGithub} from "react-icons/fa";
+import { FaBars, FaInstagram, FaTwitter, FaLinkedinIn, FaCode,FaArrowCircleUp,FaArrowUp,FaGithub} from "react-icons/fa";
 import umutbektas from './img/umutbektas.jpg'
 import umutbektas1 from './img/umutbektas - Kopya.jpg'
 import portfolio from './img/portfolio.jpg'
@@ -10,44 +10,27 @@ import { Fade,Reveal } from "react-awesome-reveal";
 import Typewriter from 'typewriter-effect';
 import mycv from './cv/UmutBektasCv.pdf'
 import { keyframes } from "@emotion/react";
-import { topAnimation,rightAnimation ,leftAnimation,bottomAnimation} from './styles/Animation';
+import { topAnimation,leftAnimation,bottomAnimation,startAnimation,customAnimation} from './styles/Animation';
 
 function App() {
-  const customAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(-0);
-  }
-`
-const startAnimation = keyframes`
-from {
-  opacity: 0;
-  transform: translateY(100px);
-}
-
-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-`
+  const [isopen,setIsOpen]=useState((false))
+  
   const [activeLink,setActiveLink] = useState("Home")
   return (
     <div>
       <header>
         <a href="#" className="logo">Portfolio</a>
         <FaBars id="navbar-icon" />
-        <nav >
+        <nav className={isopen ? "nav-active": null}>
           <Link to="home" spy={true} smooth={true} offset={-100} duration={100} style={{cursor:"pointer"}}>Home</Link>
           <Link to="about" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>About</Link>
           <Link to="services" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>Services</Link>
           <Link to="portfolio" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>Portfolio</Link>
           <Link to="contact" spy={true} smooth={true} offset={0} duration={100} style={{cursor:"pointer"}}>Contact</Link>
         </nav>
+        <div className="nav-toggle" onClick={()=>setIsOpen(!isopen)}>
+        <FaBars/>
+        </div>
       </header>
       {/* HOME */}
       <section className="home" id="home">
@@ -85,7 +68,7 @@ to {
         <div className="about-content">
         <Fade top duration="1000" keyframes={topAnimation}>
           <h2 className="heading">About <span>Me</span></h2> </Fade>
-          <Fade top duration="1000" keyframes={rightAnimation}>
+          <Fade  duration="1000" cascade>
           <h3>Frontend Developer</h3>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquam, modi
             aspernatur placeat architecto amet laudantium id.</p>
@@ -136,18 +119,18 @@ to {
           <div className="portfolio-box">
             <img src={portfolio}></img>
             <div className="portfolio-layer">
-            <h4>Web Design</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a><FaArrowCircleUp style={{backgroundColor:"#323946",fontSize:"2rem"}}/></a>
+            <h4>Github-Jobs</h4>
+            <p>React,css ve bootstrap kullandığım iş bulma platformu.</p>
+            <a href="https://github.com/umutbektass/github-jobs" target="_blank"><FaArrowCircleUp style={{backgroundColor:"#323946",fontSize:"2rem"}}/></a>
             </div>
 
           </div>
           <div className="portfolio-box">
             <img src={portfolio}></img>
             <div className="portfolio-layer">
-            <h4>Web Design</h4>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a><FaArrowCircleUp style={{backgroundColor:"#323946",fontSize:"2rem"}}/></a>
+            <h4>E-Ticaret</h4>
+            <p>React ve bootstrap kullanarak api den çektiğim ürünler ile yaptığım e-ticaret sistemi.</p>
+            <a href="https://github.com/umutbektass/e-commerce-website" target="_blank"><FaArrowCircleUp style={{backgroundColor:"#323946",fontSize:"2rem"}}/></a>
             </div>
 
           </div>

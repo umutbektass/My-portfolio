@@ -17,7 +17,7 @@ import { Fade,Reveal } from "react-awesome-reveal";
 export  const rightAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(50px);
   }
 
   to {
@@ -46,4 +46,26 @@ export  const bottomAnimation = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
+`
+ export const customAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-0);
+  }
+`
+export const startAnimation = keyframes`
+from {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
 `
