@@ -1,15 +1,40 @@
 import { useState } from 'react';
 import './styles/style.css'
-import { FaBars, FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn, FaCode,FaArrowCircleUp,FaArrowUp} from "react-icons/fa";
+import { FaBars, FaInstagram, FaTwitter, FaFacebookF, FaLinkedinIn, FaCode,FaArrowCircleUp,FaArrowUp,FaGithub} from "react-icons/fa";
 import umutbektas from './img/umutbektas.jpg'
 import umutbektas1 from './img/umutbektas - Kopya.jpg'
 import portfolio from './img/portfolio.jpg'
 import { Link } from 'react-scroll';
 import Jump from 'react-reveal/Jump';
-import { Slide ,Fade,Zoom} from "react-awesome-reveal";
+import { Fade,Reveal } from "react-awesome-reveal";
 import Typewriter from 'typewriter-effect';
+import mycv from './cv/UmutBektasCv.pdf'
+import { keyframes } from "@emotion/react";
+import { topAnimation,rightAnimation ,leftAnimation,bottomAnimation} from './styles/Animation';
 
 function App() {
+  const customAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-0);
+  }
+`
+const startAnimation = keyframes`
+from {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+`
   const [activeLink,setActiveLink] = useState("Home")
   return (
     <div>
@@ -21,46 +46,60 @@ function App() {
           <Link to="about" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>About</Link>
           <Link to="services" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>Services</Link>
           <Link to="portfolio" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>Portfolio</Link>
-          <Link to="contact" spy={true} smooth={true} offset={-50} duration={100} style={{cursor:"pointer"}}>Contact</Link>
+          <Link to="contact" spy={true} smooth={true} offset={0} duration={100} style={{cursor:"pointer"}}>Contact</Link>
         </nav>
       </header>
       {/* HOME */}
       <section className="home" id="home">
+        <Fade top duration="1000" keyframes={customAnimation}>
         <div className="home-contect">
           <h3>Merhaba!</h3>
-          <h1>Ben Umut Bektaş</h1>
+          <Fade direction="left" damping={0.3} cascade={true}>
+          <h1>Ben Umut Bektaş</h1></Fade>
           <h3>Frontend Developer <span><Typewriter options={{autoStart:true,loop:true,delay:80,strings:["Olarak çalışmaktayım"],pauseFor:5000}}/></span></h3>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquam, modi
             aspernatur placeat architecto amet laudantium id.</p>
           <div className="social-media">
-            <a href="#"><FaFacebookF className="icon" /></a>
-            <a href="#"><FaInstagram className="icon" /></a>
-            <a href="#"><FaTwitter className="icon" /></a>
-            <a href="#"><FaLinkedinIn className="icon" /></a>
+            <a href="https://github.com/umutbektass" target="_blank"><FaGithub className="icon" /></a>
+            <a href="https://www.instagram.com/umutbektasx" target="_blank"><FaInstagram className="icon" /></a>
+            <a href="https://github.com/umutbektass" target="_blank"><FaTwitter className="icon" /></a>
+            <a href="https://www.linkedin.com/in/umut-bekta%C5%9F-6a6045241" target="_blank"><FaLinkedinIn className="icon" /></a>
           </div>
-          <button className="btnCv">Download CV</button>
+          <a className="btnCv downloadCv" href={mycv} download="UmutBektasCv">Download CV</a>
+       
         </div>
+        </Fade>
+        <Fade top duration="1000" keyframes={startAnimation}>
         <div className="home-img">
           <img src={umutbektas1}></img>
         </div>
+        </Fade>
       </section>
       {/* ABOUT SECTİON */}
       <section className="about" id="about">
+      <Fade top duration="1000" keyframes={leftAnimation}>
         <div className="about-img">
           <img src={umutbektas1}></img>
         </div>
+        </Fade>
         <div className="about-content">
-          <h2 className="heading">About <span>Me</span></h2>
+        <Fade top duration="1000" keyframes={topAnimation}>
+          <h2 className="heading">About <span>Me</span></h2> </Fade>
+          <Fade top duration="1000" keyframes={rightAnimation}>
           <h3>Frontend Developer</h3>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquam, modi
             aspernatur placeat architecto amet laudantium id.</p>
           <button className="btnCv">Read More</button>
+          </Fade>
         </div>
+       
       </section>
       {/* SERVİCES */}
       <section className="services" id="services">
+      <Fade top duration="1000" keyframes={topAnimation}>
         <h2 className="heading">Our <span>Services</span></h2>
-
+      </Fade>
+      <Fade top duration="1000" keyframes={bottomAnimation}>
         <div className="services-container">
           <div className="services-box">
             <i className="bx bx-code-alt"> <FaCode /></i>
@@ -86,10 +125,13 @@ function App() {
             <button className="btnCv">Read More</button>
           </div>
         </div>
+        </Fade>
       </section>
       {/* PORTFOLİO SECTİON */}
       <section className="portfolio" id="portfolio">
-        <h2 className="heading">Latest <span>Project</span></h2>
+      <Fade top duration="1000" keyframes={topAnimation}>
+        <h2 className="heading">Latest <span>Project</span></h2> </Fade>
+        <Fade top duration="1000" keyframes={bottomAnimation}>
         <div className="portfolio-container">
           <div className="portfolio-box">
             <img src={portfolio}></img>
@@ -111,11 +153,14 @@ function App() {
           </div>
 
         </div>
+        </Fade>
       </section>
 
       {/* CONTACT */}
       <section className="contact" id="contact">
-        <h2 className="heading">Contact <span>Me</span></h2>
+      <Fade top duration="1000" keyframes={topAnimation}>
+        <h2 className="heading">Contact <span>Me</span></h2> </Fade>
+        <Fade top duration="1000" keyframes={bottomAnimation}>
         <form action="#">
           <div className="input-box">
             <input type="text" placeholder="Full Name"></input>
@@ -128,6 +173,7 @@ function App() {
           <textarea name="" id="" cols="30" rows="10" placeholder="Mesaj.."></textarea>
           <button type="submit" className="btnCv">Gönder</button>
         </form>
+        </Fade>
       </section>
       {/* FOOTER */}
       <footer className="footer">

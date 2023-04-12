@@ -44,6 +44,13 @@ span {
     font-weight: 600;
     transition: .5s ease;
 }
+.downloadCv{
+    text-decoration: none;
+}
+.downloadCv:hover{
+    box-shadow: none;
+    color:#1f242d;
+}
 .btnCv:hover{
    box-shadow: none;
 }
@@ -114,6 +121,8 @@ section{
         transform: translateY(0);
     }
 }
+
+
 
 .social-media a{
     display: inline-flex;
@@ -427,6 +436,7 @@ section{
     .services-container{
         flex-direction: column;
     }
+  
    
 
 }
